@@ -11,12 +11,12 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String context;
-    private boolean done;
+    private Boolean done;
 
     public Todo() {
     }
 
-    public Todo(String context, boolean done) {
+    public Todo(String context, Boolean done) {
         this.context = context;
         this.done = done;
     }
@@ -37,11 +37,11 @@ public class Todo {
         this.context = context;
     }
 
-    public boolean isDone() {
+    public Boolean getDone() {
         return done;
     }
 
-    public void setDone(boolean done) {
+    public void setDone(Boolean done) {
         this.done = done;
     }
 }
