@@ -38,4 +38,9 @@ public class TodoController {
         todoService.deleteById(id);
     }
 
+    @PutMapping("/{id}")
+    public Todo updateById(@PathVariable Integer id, @RequestBody TodoRequest todoRequest){
+        return todoService.updateById(id, todoMapper.toEntity(todoRequest));
+    }
+
 }

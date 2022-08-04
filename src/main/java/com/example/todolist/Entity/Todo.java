@@ -44,4 +44,13 @@ public class Todo {
     public void setDone(Boolean done) {
         this.done = done;
     }
+
+    public void merge(Todo toEntity) {
+        if(toEntity.getDone() != null){
+            this.setDone(toEntity.getDone());
+        }
+        if(toEntity.getContext() != null){
+            this.setContext(toEntity.getContext());
+        }
+    }
 }

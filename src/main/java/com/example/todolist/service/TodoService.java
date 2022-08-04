@@ -10,4 +10,6 @@ public interface TodoService {
     Todo create(Todo todo);
 
     void deleteById(Integer id);
+
+    Todo updateById(Integer id, Todo toEntity);
 }
