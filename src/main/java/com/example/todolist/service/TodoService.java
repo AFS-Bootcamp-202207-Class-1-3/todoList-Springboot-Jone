@@ -8,4 +8,6 @@ public interface TodoService {
     List<Todo> findAll();
 
     Todo create(Todo todo);
+
+    void deleteById(Integer id);
 }

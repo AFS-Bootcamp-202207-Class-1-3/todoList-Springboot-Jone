@@ -27,10 +27,13 @@ class TodoControllerTest {
 	@Resource
 	TodoRepository todoRepository;
 
+	private int savedTodoId;
+
 	@BeforeEach
 	void init(){
 		todoRepository.deleteAll();
-		todoRepository.save(new Todo("todo test", false));
+		Todo todo = todoRepository.save(new Todo("todo test", false));
+		savedTodoId = todo.getId();
 	}
 
 
@@ -59,6 +62,12 @@ class TodoControllerTest {
 				.andExpect(MockMvcResultMatchers.status().isCreated())
 				.andExpect(MockMvcResultMatchers.jsonPath("$.context").value("todo post test"))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.done").value(false));
+	}
+
+	@Test
+	public void should_delete_a_todo_when_perform_delete_given_id() throws Exception {
+		client.perform(MockMvcRequestBuilders.delete("/todos/{id}", savedTodoId))
+				.andExpect(MockMvcResultMatchers.status().isNoContent());
 	}
 
 }

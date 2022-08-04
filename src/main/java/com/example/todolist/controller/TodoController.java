@@ -32,4 +32,10 @@ public class TodoController {
         return todoService.create(todoMapper.toEntity(todoRequest));
     }
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Integer id){
+        todoService.deleteById(id);
+    }
+
 }
